@@ -20,8 +20,8 @@
 	}
 	else 
 	{
-		$stmt = $conn->prepare("INSERT into Contacts (First, Last, Email, Phone, UserID) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssss", $firstName, $lastName, $phoneNum, $email, $userId);  
+		$stmt = $conn->prepare("INSERT into Contacts (UserId,First, Last, Email, Phone) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssss", $userId, $firstName, $lastName, $phoneNum, $email);  
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
@@ -42,7 +42,7 @@
 	
 	function returnWithError( $err )
 	{
-		$retValue = '{"firstName":"","lastName":","phoneNum":"","email":"","userId"","error":"' . $err . '"}';
+		$retValue = '{"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 ?>
