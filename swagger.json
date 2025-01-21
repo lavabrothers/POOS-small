@@ -64,25 +64,25 @@
         "userId"
       ],
       "properties": {
+        "userId": {
+          "type": "integer",
+          "example": "1"
+        },
         "first": {
           "type": "string",
           "example": "george"
         },
         "last": {
           "type": "string",
-          "example": "dennis"
+          "example": "clooney"
         },
         "email": {
           "type": "string",
-          "example": "fred@gmail.com"
+          "example": "georgeclooney@gmail.com"
         },
         "phoneNum": {
           "type": "string",
           "example": "1234567890"
-        },
-        "userId": {
-          "type": "string",
-          "example": "1"
         }
       }
     }
