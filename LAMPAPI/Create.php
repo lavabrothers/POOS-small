@@ -9,28 +9,23 @@
 	
 	$firstName = $inData["firstName"];
     $lastName = $inData["lastName"];
+	$phoneNum = $inData["phoneNum"];
     $email = $inData["email"];
-    $phoneNum = $inData["phoneNum"];
     $userId = $inData["userId"];
 
 	$conn = new mysqli("localhost", "messenger", "WeLoveCOP4331", "UserData");
-	if ($conn->connect_error) {
-		returnWithError("Database connection failed: " . $conn->connect_error);
-		exit();
-	} else {
-		
-		$stmt = $conn->prepare("INSERT INTO Contacts (First, Last, Phone, Email, UserID) VALUES (?, ?, ?, ?, ?)");
+	if ($conn->connect_error) 
+	{
+		returnWithError( $conn->connect_error);
+	}
+	 else 
+	 {
+		$stmt = $conn->prepare("INSERT INTO Contacts (First, Last, Email, Phone, UserID) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param("ssssi", $firstName, $lastName, $phoneNum, $email, $userId);  
-
-		
-		if ($stmt->execute()) {
-			returnWithInfo($conn->insert_id);
-		} else {
-			returnWithError("Unable to create contact.");
-		}
-
+		$stmt->execute();
 		$stmt->close();
 		$conn->close();
+		returnWithError("");
 	}
 
 	
@@ -39,22 +34,16 @@
 		return json_decode(file_get_contents('php://input'), true);
 	}
 
-	function sendResultInfoAsJson($obj)
+	function sendResultInfoAsJson( $obj )
 	{
 		header('Content-type: application/json');
 		echo $obj;
 	}
-
-	function returnWithError($err)
+	
+	function returnWithError( $err )
 	{
 		$retValue = '{"error":"' . $err . '"}';
-		sendResultInfoAsJson($retValue);
+		sendResultInfoAsJson( $retValue );
 	}
-
-	function returnWithInfo($id)
-	{
-		$retValue = '{"id":' . $id . ',"error":""}';
-		sendResultInfoAsJson($retValue);
-	}
-
+	
 ?>
