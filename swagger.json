@@ -98,7 +98,7 @@
           "type": "integer",
           "example":"1"
         },
-        "userId": {
+        "UserID": {
           "type": "integer",
           "example": "1"
         }
