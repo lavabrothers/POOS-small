@@ -64,10 +64,6 @@
         "userId"
       ],
       "properties": {
-        "userId": {
-          "type": "integer",
-          "example": "1"
-        },
         "first": {
           "type": "string",
           "example": "george"
@@ -83,6 +79,10 @@
         "phoneNum": {
           "type": "string",
           "example": "1234567890"
+        },
+        "userId": {
+          "type": "integer",
+          "example": "1"
         }
       }
     }
