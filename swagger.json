@@ -57,18 +57,18 @@
     "Create": {
       "type": "object",
       "required": [
-        "first",
-        "last",
+        "firstName",
+        "lastName",
         "email",
         "phoneNum",
         "userId"
       ],
       "properties": {
-        "first": {
+        "firstName": {
           "type": "string",
           "example": "george"
         },
-        "last": {
+        "lastName": {
           "type": "string",
           "example": "clooney"
         },
