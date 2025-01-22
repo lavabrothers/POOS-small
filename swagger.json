@@ -57,18 +57,18 @@
     "Create": {
       "type": "object",
       "required": [
-        "firstName",
-        "lastName",
+        "first",
+        "last",
         "email",
         "phoneNum",
         "userId"
       ],
       "properties": {
-        "firstName": {
+        "first": {
           "type": "string",
           "example": "george"
         },
-        "lastName": {
+        "last": {
           "type": "string",
           "example": "clooney"
         },
@@ -79,6 +79,24 @@
         "phoneNum": {
           "type": "string",
           "example": "1234567890"
+        },
+        "userId": {
+          "type": "integer",
+          "example": "1"
+        }
+      }
+    },
+
+    "Delete": {
+      "type": "object",
+      "required": [
+        "ContID",
+        "UserID"
+      ],
+      "properties": {
+        "ContID":{
+          "type": "integer",
+          "example":"1"
         },
         "userId": {
           "type": "integer",
@@ -185,6 +203,39 @@
             "description": "Create",
             "schema": {
               "$ref": "#/definitions/Create"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "URL Not Found"
+          }
+        }
+      }
+    },
+    "/Delete.php": {
+      "post": {
+        "tags": [
+          "APIS"
+        ],
+        "operationId": "doDelete",
+        "summary": "Deletes a conatact from a User",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "deleteIten",
+            "description": "Delete",
+            "schema": {
+              "$ref": "#/definitions/Delete"
             }
           }
         ],
