@@ -4,7 +4,7 @@
 	header("Access-Control-Allow-Origin: *");
 	header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 	header("Access-Control-Allow-Headers: Content-Type, Authorization");
-	header("Access-Control-Allow-Credentials: true");
+	header("Access-Control-Allow-Credentials: false");
 
 	$inData = getRequestInfo(); //you need first, last, email, phone, contactID, and userid to update the contact. unchanged values are still processed
     $firstName = $inData["firstName"];
