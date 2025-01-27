@@ -12,6 +12,20 @@
     align-items: center;
 }
 
+.listContainer{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    background-color: #fafbff;
+    border-color: #8c90b9;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    padding: 20px;
+}
+
 .loginCard{
     padding:10px;
     width: 40%;
