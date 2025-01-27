@@ -4,7 +4,7 @@
 	header("Access-Control-Allow-Origin: *");
 	header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 	header("Access-Control-Allow-Headers: Content-Type, Authorization");
-	header("Access-Control-Allow-Credentials: false");
+	header("Access-Control-Allow-Credentials: true");
 
 	$inData = getRequestInfo(); //you need first, last, email, phone, contactID, and userid to update the contact. unchanged values are still processed
     $firstName = $inData["firstName"];
@@ -21,7 +21,7 @@
 	}
 	else
 	{
-		$stmt = $conn->prepare("INSERT INTO Contacts (CondID, First, Last, Phone, Email, UserID) VALUES (?,?,?,?,?,?) ON DUPLICATE KEY UPDATE ContID = VALUES(ContID), First = VALUES(First), Last = VALUES(Last), Phone = VALUES(Phone), Email = VALUES(Email), UserID = VALUES(UserID)");
+		$stmt = $conn->prepare("INSERT INTO Contacts (ContID, First, Last, Phone, Email, UserID) VALUES (?,?,?,?,?,?) ON DUPLICATE KEY UPDATE ContID = VALUES(ContID), First = VALUES(First), Last = VALUES(Last), Phone = VALUES(Phone), Email = VALUES(Email), UserID = VALUES(UserID)");
         $stmt->bind_param("issssi", $contID, $firstName, $lastName, $phoneNum, $email,$userId);
 
         if($stmt->execute()){
