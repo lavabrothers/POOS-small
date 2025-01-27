@@ -50,7 +50,7 @@ function doLogin()
 
 				saveCookie();
 	
-				window.location.href = "color.html"; // redirect if sucessful, change to login.html
+				window.location.href = "home.html"; // redirect if sucessful, change to login.html
 			}
 		};
 		xhr.send(jsonPayload);
