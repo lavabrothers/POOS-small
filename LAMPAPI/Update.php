@@ -1,10 +1,14 @@
 
 <?php
 
-	header("Access-Control-Allow-Origin: *");
-	header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-	header("Access-Control-Allow-Headers: Content-Type, Authorization");
-	header("Access-Control-Allow-Credentials: true");
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Methods: POST, OPTIONS");
+    header("Access-Control-Allow-Headers: Content-Type, Authorization");
+    header("Access-Control-Allow-Credentials: true");
+
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
 
 	$inData = getRequestInfo(); //you need first, last, email, phone, contactID, and userid to update the contact. unchanged values are still processed
     $firstName = $inData["firstName"];
@@ -25,7 +29,7 @@
         $stmt->bind_param("issssi", $contID, $firstName, $lastName, $phoneNum, $email,$userId);
 
         if($stmt->execute()){
-            returnWithInfo($contID, $firstName, $lastName, $phoneNum, $userId, $email);
+            returnWithInfo($contID, $firstName, $lastName, $phoneNum, $email, $userId);
         }else{
             returnWithError("Unable to update contact");
         }
