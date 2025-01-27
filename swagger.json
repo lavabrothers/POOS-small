@@ -86,7 +86,6 @@
         }
       }
     },
-
     "Delete": {
       "type": "object",
       "required": [
@@ -94,11 +93,48 @@
         "UserID"
       ],
       "properties": {
-        "ContID":{
+        "ContID": {
           "type": "integer",
-          "example":"1"
+          "example": "1"
         },
         "UserID": {
+          "type": "integer",
+          "example": "1"
+        }
+      }
+    },
+    "Update": {
+      "type": "object",
+      "required": [
+        "contID",
+        "firstName",
+        "lastName",
+        "email",
+        "phoneNum",
+        "userId"
+      ],
+      "properties": {
+        "contID": {
+          "type": "integer",
+          "example": "1"
+        },
+        "firstName": {
+          "type": "string",
+          "example": "george"
+        },
+        "lastName": {
+          "type": "string",
+          "example": "clooney"
+        },
+        "email": {
+          "type": "string",
+          "example": "georgeclooney@gmail.com"
+        },
+        "phoneNum": {
+          "type": "string",
+          "example": "1234567890"
+        },
+        "userId": {
           "type": "integer",
           "example": "1"
         }
@@ -236,6 +272,39 @@
             "description": "Delete",
             "schema": {
               "$ref": "#/definitions/Delete"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "URL Not Found"
+          }
+        }
+      }
+    },
+    "/Update.php": {
+      "post": {
+        "tags": [
+          "APIS"
+        ],
+        "operationId": "doUpdate",
+        "summary": "Updates a contact",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "deleteIten",
+            "description": "Delete",
+            "schema": {
+              "$ref": "#/definitions/Update"
             }
           }
         ],
