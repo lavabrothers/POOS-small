@@ -13,7 +13,7 @@
 
       <h2>Please Login to continue</h2>
       <h5 class="required">* Mandatory Fields</h5>
-      <form action="" method="post">
+      <form action="" onsubmit="doLogin(event)" method="post">
         <label for="username">Username
           <span class="required">*</span>
         </label>
@@ -24,7 +24,7 @@
         </label>
         <input type="password" id="password" name="password" required/>
         <br/>
-        <button type="submit" onclick="doLogin()";>Login</button>
+        <button type="submit">Login</button>
         <span id="loginResult"></span>
       </form>
       <br/>

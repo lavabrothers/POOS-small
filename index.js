@@ -6,8 +6,11 @@ let firstName = "";
 let lastName = "";
 
 // handle the login
-function doLogin()
+function doLogin(event)
 {
+	event.preventDefault(); // stops the inputs from clearing
+
+
     userId = 0;
 	firstName = "";
 	lastName = "";
@@ -42,6 +45,8 @@ function doLogin()
 				if( userId < 1 ) // if the userID is invalid
 				{		
 					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+					alert("User/Password didn't match.");
+		
 					return;
 				}
 		
