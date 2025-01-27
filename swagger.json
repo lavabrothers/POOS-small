@@ -340,7 +340,7 @@
         }
       }
     },
-    "/Search": {
+    "/Search.php": {
       "post": {
         "tags":[
           "APIS"
@@ -365,7 +365,7 @@
             }
           }
         ],
-        
+
         "responses": {
           "200": {
             "description": "OK"
