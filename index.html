@@ -12,12 +12,17 @@
     <div class="loginCard">
 
       <h2>Please Login to continue</h2>
-      <form action="/login" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" />
+      <h5 class="required">* Mandatory Fields</h5>
+      <form action="" method="post">
+        <label for="username">Username
+          <span class="required">*</span>
+        </label>
+        <input type="text" id="username" name="username" required/>
         <br/>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" />
+        <label for="password">Password
+          <span class="required">*</span>
+        </label>
+        <input type="password" id="password" name="password" required/>
         <br/>
         <button type="submit" onclick="doLogin()";>Login</button>
         <span id="loginResult"></span>

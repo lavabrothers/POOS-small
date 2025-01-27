@@ -6,16 +6,28 @@ let firstName = "";
 let lastName = "";
 
 // handle the login
-function doLogin()
+function doSignUp(event)
 {
+	event.preventDefault(); // stops the inputs from clearing
+
+	var password = document.querySelector('.password').value,
+	confirmPassword = document.querySelector('.confirmPassword').value;
+
+	if(password !== confirmPassword){
+		alert("Password didn't match. Try again.");
+		return;
+	}
+
+	console.log("Passwords match..")
+
     userId = 0;
 	firstName = "";
 	lastName = "";
 
     let login = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
+    //let password = document.getElementById("password").value;
 
-    document.getElementById("loginResult").innerHTML = "";
+    document.getElementById("signUpResult").innerHTML = "";
 
     // add for case that user or password are not entered
 
@@ -23,7 +35,7 @@ function doLogin()
     let jsonPayload = JSON.stringify( tmp ); // convert to json string
 
     // api url
-    let url = urlBase + '/Login.' + extension;
+    let url = urlBase + '/SignUp.' + extension;
 
     // send login request
     let xhr = new XMLHttpRequest();
@@ -41,7 +53,7 @@ function doLogin()
 		
 				if( userId < 1 ) // if the userID is invalid
 				{		
-					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+					document.getElementById("SignUpResult").innerHTML = "User/Password combination incorrect";
 					return;
 				}
 		
@@ -57,7 +69,7 @@ function doLogin()
 	}
 	catch(err)
 	{
-		document.getElementById("loginResult").innerHTML = err.message;
+		document.getElementById("SignUpResult").innerHTML = err.message;
 	}
 }
 
@@ -189,5 +201,4 @@ function searchColor()
 	}
 	
 }
-
 

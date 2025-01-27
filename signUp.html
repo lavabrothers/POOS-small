@@ -6,26 +6,38 @@
   </head>
   
   <body class="container">
-    
+    <script src="signUp.js"></script>
     <h1 class="title">COP 4331 LAMP Stack DEMO, Spring 2025</h1>
     
     <div class="loginCard">
 
       <h2>Please Sign Up to continue</h2>
-      <form action="/login" method="post">
-        <label for="username">First Name:</label>
-        <input type="text" id="firstname" name="firstname" />
+      <h5 class="required">* Mandatory Fields</h5>
+      <form action="" onsubmit="doSignUp(event)" method="post">
+        <label for="username">First Name 
+          <span class="required">*</span>
+        </label>
+        <input type="text" id="firstname" name="firstname" required/>
         <br/>
-        <label for="username">Last Name:</label>
-        <input type="text" id="lastname" name="lastname" />
+        <label for="username">Last Name</label>
+        <input type="text" id="lastname" name="lastname"/>
         <br/>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" />
+        <label for="username">Username
+          <span class="required">*</span>
+        </label>
+        <input type="text" id="username" name="username" required/>
         <br/>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" />
+        <label for="password">Password
+          <span class="required">*</span>
+        </label>
+        <input class="password" type="password" id="password" name="password" required/>
         <br/>
-        <button type="submit" onclick="doSignUp()";>Sign Up</button>
+        <label for="password">Confirm Password
+          <span class="required">*</span>
+        </label>
+        <input class="confirmPassword" type="password" id="password" name="password" required/>
+        <br/>
+        <button class = "button" type="submit">Sign Up</button>
         <span id="signUpResult"></span>
       </form>
       <br/>
