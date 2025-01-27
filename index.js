@@ -41,6 +41,8 @@ function doLogin(event)
 			{
 				let jsonObject = JSON.parse( xhr.responseText ); // response from the server
 				userId = jsonObject.id; /// save in userId
+				window.location.href = "./home.html"; // redirect if sucessful, change to login.html
+
 		
 				if( userId < 1 ) // if the userID is invalid
 				{		
@@ -55,7 +57,7 @@ function doLogin(event)
 
 				saveCookie();
 	
-				window.location.href = "./home.html"; // redirect if sucessful, change to login.html
+				
 			}
 		};
 		xhr.send(jsonPayload);
