@@ -139,8 +139,30 @@
           "example": "1"
         }
       }
+    },
+    "Search": {
+      "type": "object",
+      "required": [
+        "userId",
+        "searchQuery"
+      ],
+      
+      "properties":{
+        "userId":{
+          "type": "interger",
+          "example": "1"
+        },
+
+        "searchQuery":{
+          "type": "string",
+          "example": "Jo"
+        }
+      }
     }
   },
+
+
+
   "host": "poossmall.mooo.com",
   "basePath": "/LAMPAPI",
   "tags": [
@@ -301,13 +323,49 @@
         "parameters": [
           {
             "in": "body",
-            "name": "deleteIten",
+            "name": "deleteItem",
             "description": "Delete",
             "schema": {
               "$ref": "#/definitions/Update"
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "URL Not Found"
+          }
+        }
+      }
+    },
+    "/Search": {
+      "post": {
+        "tags":[
+          "APIS"
+        ],
+        "operationId": "doSearch",
+        "summary": "Search for Contacts based on thr string given",
+        "consumes":[
+          "application/json"
+        ],
+
+        "produces":[
+          "application/json"
+        ],
+
+        "parameters": [
+          {
+            "in": "body",
+            "name": "searchContact",
+            "description": "Search",
+            "schema": {
+              "$ref": "#/definitions/Search"
+            }
+          }
+        ],
+        
         "responses": {
           "200": {
             "description": "OK"
