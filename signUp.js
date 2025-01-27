@@ -1,14 +1,16 @@
 const urlBase = 'http://poossmall.mooo.com/LAMPAPI';
 const extension = 'php';
 
-let usedId = 0;
-let firstName = "";
-let lastName = "";
+
 
 // handle the login
 function doSignUp(event)
 {
 	event.preventDefault(); // stops the inputs from clearing
+
+	const firstName = document.querySelector('.firstName').value;
+	const lastName = document.querySelector('.lastName').value;
+	const user = document.querySelector('.username').value;
 
 	var password = document.querySelector('.password').value,
 	confirmPassword = document.querySelector('.confirmPassword').value;
@@ -20,24 +22,29 @@ function doSignUp(event)
 
 	console.log("Passwords match..")
 
-    userId = 0;
-	firstName = "";
-	lastName = "";
+    const request = {
+		first: firstName,
+		last: lastName,
+		login: user,
+		password: password
+	};
 
-    let login = document.getElementById("username").value;
+	const jsonPayload = JSON.stringify(request)
+
+    let signup = document.getElementById("username").value;
     //let password = document.getElementById("password").value;
 
     document.getElementById("signUpResult").innerHTML = "";
 
     // add for case that user or password are not entered
 
-    let tmp = {login:login,password:password};
-    let jsonPayload = JSON.stringify( tmp ); // convert to json string
+    // let tmp = {login:login,password:password};
+    // let jsonPayload = JSON.stringify( tmp ); // convert to json string
 
     // api url
-    let url = urlBase + '/SignUp.' + extension;
+    let url = urlBase + '/Signup.' + extension;
 
-    // send login request
+    // send signup request
     let xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -49,20 +56,15 @@ function doSignUp(event)
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				let jsonObject = JSON.parse( xhr.responseText ); // response from the server
-				userId = jsonObject.id; /// save in userId
-		
-				if( userId < 1 ) // if the userID is invalid
-				{		
-					document.getElementById("SignUpResult").innerHTML = "User/Password combination incorrect";
-					return;
-				}
-		
-				firstName = jsonObject.firstName;
-				lastName = jsonObject.lastName;
-
+				
 				saveCookie();
-	
-				window.location.href = "color.html"; // redirect if sucessful, change to login.html
+				
+				if (response.error) {
+					document.getElementById('signUpResult').innerHTML = response.error;
+				} else {
+					alert('Sign-up successful! Redirecting to login...');
+					window.location.href = 'home.html'; // Redirect to the login page
+				}
 			}
 		};
 		xhr.send(jsonPayload);
@@ -126,79 +128,4 @@ function doLogout()
 	window.location.href = "index.html"; // go to the login page
 }
 
-function addColor()
-{
-	let newColor = document.getElementById("colorText").value;
-	document.getElementById("colorAddResult").innerHTML = "";
-
-	let tmp = {color:newColor,userId,userId};
-	let jsonPayload = JSON.stringify( tmp );
-
-	let url = urlBase + '/AddColor.' + extension;
-	
-	let xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try
-	{
-		xhr.onreadystatechange = function() 
-		{
-			if (this.readyState == 4 && this.status == 200) 
-			{
-				document.getElementById("colorAddResult").innerHTML = "Color has been added";
-			}
-		};
-		xhr.send(jsonPayload);
-	}
-	catch(err)
-	{
-		document.getElementById("colorAddResult").innerHTML = err.message;
-	}
-	
-}
-
-function searchColor()
-{
-	let srch = document.getElementById("searchText").value;
-	document.getElementById("colorSearchResult").innerHTML = "";
-	
-	let colorList = "";
-
-	let tmp = {search:srch,userId:userId};
-	let jsonPayload = JSON.stringify( tmp );
-
-	let url = urlBase + '/SearchColors.' + extension;
-	
-	let xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try
-	{
-		xhr.onreadystatechange = function() 
-		{
-			if (this.readyState == 4 && this.status == 200) 
-			{
-				document.getElementById("colorSearchResult").innerHTML = "Color(s) has been retrieved";
-				let jsonObject = JSON.parse( xhr.responseText );
-				
-				for( let i=0; i<jsonObject.results.length; i++ )
-				{
-					colorList += jsonObject.results[i];
-					if( i < jsonObject.results.length - 1 )
-					{
-						colorList += "<br />\r\n";
-					}
-				}
-				
-				document.getElementsByTagName("p")[0].innerHTML = colorList;
-			}
-		};
-		xhr.send(jsonPayload);
-	}
-	catch(err)
-	{
-		document.getElementById("colorSearchResult").innerHTML = err.message;
-	}
-	
-}
 
