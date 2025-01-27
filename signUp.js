@@ -8,8 +8,8 @@ function doSignUp(event)
 {
 	event.preventDefault(); // stops the inputs from clearing
 
-	const firstName = document.querySelector('.firstName').value;
-	const lastName = document.querySelector('.lastName').value;
+	const firstName = document.querySelector('.firstname').value;
+	const lastName = document.querySelector('.lastname').value;
 	const user = document.querySelector('.username').value;
 
 	var password = document.querySelector('.password').value,
