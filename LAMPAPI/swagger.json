@@ -1,0 +1,322 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is the documentation for the POOSD small project API.",
+    "version": "1.0.0",
+    "title": "POOSD Small",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "definitions": {
+    "Login": {
+      "type": "object",
+      "required": [
+        "login",
+        "password"
+      ],
+      "properties": {
+        "login": {
+          "type": "string",
+          "example": "fred"
+        },
+        "password": {
+          "type": "string",
+          "example": "secret"
+        }
+      }
+    },
+    "Signup": {
+      "type": "object",
+      "required": [
+        "first",
+        "last",
+        "login",
+        "password"
+      ],
+      "properties": {
+        "first": {
+          "type": "string",
+          "example": "george"
+        },
+        "last": {
+          "type": "string",
+          "example": "stephanopoulos"
+        },
+        "login": {
+          "type": "string",
+          "example": "fred"
+        },
+        "password": {
+          "type": "string",
+          "example": "secret"
+        }
+      }
+    },
+    "Create": {
+      "type": "object",
+      "required": [
+        "firstName",
+        "lastName",
+        "email",
+        "phoneNum",
+        "userId"
+      ],
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "example": "george"
+        },
+        "lastName": {
+          "type": "string",
+          "example": "clooney"
+        },
+        "email": {
+          "type": "string",
+          "example": "georgeclooney@gmail.com"
+        },
+        "phoneNum": {
+          "type": "string",
+          "example": "1234567890"
+        },
+        "userId": {
+          "type": "integer",
+          "example": "1"
+        }
+      }
+    },
+    "Delete": {
+      "type": "object",
+      "required": [
+        "ContID",
+        "UserID"
+      ],
+      "properties": {
+        "ContID": {
+          "type": "integer",
+          "example": "1"
+        },
+        "UserID": {
+          "type": "integer",
+          "example": "1"
+        }
+      }
+    },
+    "Update": {
+      "type": "object",
+      "required": [
+        "contID",
+        "firstName",
+        "lastName",
+        "email",
+        "phoneNum",
+        "userId"
+      ],
+      "properties": {
+        "contID": {
+          "type": "integer",
+          "example": "1"
+        },
+        "firstName": {
+          "type": "string",
+          "example": "george"
+        },
+        "lastName": {
+          "type": "string",
+          "example": "clooney"
+        },
+        "email": {
+          "type": "string",
+          "example": "georgeclooney@gmail.com"
+        },
+        "phoneNum": {
+          "type": "string",
+          "example": "1234567890"
+        },
+        "userId": {
+          "type": "integer",
+          "example": "1"
+        }
+      }
+    }
+  },
+  "host": "poossmall.mooo.com",
+  "basePath": "/LAMPAPI",
+  "tags": [
+    {
+      "name": "APIS",
+      "description": "API Endpoints"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/Login.php": {
+      "post": {
+        "tags": [
+          "APIS"
+        ],
+        "operationId": "doLogin",
+        "summary": "Logs in to contacts app",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "loginItem",
+            "description": "Login",
+            "schema": {
+              "$ref": "#/definitions/Login"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "URL Not Found"
+          }
+        }
+      }
+    },
+    "/Signup.php": {
+      "post": {
+        "tags": [
+          "APIS"
+        ],
+        "operationId": "doSignup",
+        "summary": "Signs up for an account in the contacts app",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "signupItem",
+            "description": "Sign up form",
+            "schema": {
+              "$ref": "#/definitions/Signup"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "URL Not Found"
+          }
+        }
+      }
+    },
+    "/Create.php": {
+      "post": {
+        "tags": [
+          "APIS"
+        ],
+        "operationId": "doCreate",
+        "summary": "Creates a conatact for User",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "createIten",
+            "description": "Create",
+            "schema": {
+              "$ref": "#/definitions/Create"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "URL Not Found"
+          }
+        }
+      }
+    },
+    "/Delete.php": {
+      "post": {
+        "tags": [
+          "APIS"
+        ],
+        "operationId": "doDelete",
+        "summary": "Deletes a conatact from a User",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "deleteIten",
+            "description": "Delete",
+            "schema": {
+              "$ref": "#/definitions/Delete"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "URL Not Found"
+          }
+        }
+      }
+    },
+    "/Update.php": {
+      "post": {
+        "tags": [
+          "APIS"
+        ],
+        "operationId": "doUpdate",
+        "summary": "Updates a contact",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "deleteIten",
+            "description": "Delete",
+            "schema": {
+              "$ref": "#/definitions/Update"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "URL Not Found"
+          }
+        }
+      }
+    }
+  }
+}
