@@ -149,7 +149,7 @@
       
       "properties":{
         "userId":{
-          "type": "interger",
+          "type": "integer",
           "example": "1"
         },
 
