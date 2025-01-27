@@ -1,63 +1,22 @@
-<?php
+	function getRequestInfo()
+	{
+		return json_decode(file_get_contents('php://input'), true);
+	}
 
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: POST, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
-header("Access-Control-Allow-Credentials: true");
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-$inData = getRequestInfo();
-
-
-if (empty($inData["userId"])) {
-    die(json_encode(["error" => "Missing userId."]));
-}
-
-$userId = $inData["userId"];
-$searchQuery = isset($inData["searchQuery"]) ? "%" . $inData["searchQuery"] . "%" : "%";
-
-
-$conn = new mysqli("localhost", "messenger", "WeLoveCOP4331", "UserData");
-if ($conn->connect_error) {
-    die(json_encode(["error" => "Database connection failed: " . $conn->connect_error]));
-}
-
-
-$stmt = $conn->prepare("
-    SELECT ContID, First, Last, Phone, Email
-    FROM Contacts
-    WHERE UserID = ? AND
-          (First LIKE ? OR Last LIKE ? OR Phone LIKE ? OR Email LIKE ?)
-");
-if (!$stmt) {
-    $conn->close();
-    die(json_encode(["error" => "Prepare failed: " . $conn->error]));
-}
-
-$stmt->bind_param("issss", $userId, $searchQuery, $searchQuery, $searchQuery, $searchQuery);
-
-
-$stmt->execute();
-$result = $stmt->get_result();
-
-
-$contacts = [];
-while ($row = $result->fetch_assoc()) {
-    $contacts[] = $row;
-}
-
-
-$stmt->close();
-$conn->close();
-
-
-echo json_encode(["contacts" => $contacts, "error" => ""]);
-
-function getRequestInfo() {
-    return json_decode(file_get_contents('php://input'), true);
-}
-
-?>
+	function sendResultInfoAsJson( $obj )
+	{
+		header('Content-type: application/json');
+		echo $obj;
+	}
+	
+	function returnWithError( $err )
+	{
+		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+		sendResultInfoAsJson( $retValue );
+	}
+	
+	function returnWithInfo( $searchResults )
+	{
+		$retValue = '{"results":[' . $searchResults . '],"error":""}';
+		sendResultInfoAsJson( $retValue );
+	}
