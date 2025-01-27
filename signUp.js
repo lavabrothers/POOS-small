@@ -63,7 +63,7 @@ function doSignUp(event)
 					document.getElementById('signUpResult').innerHTML = response.error;
 				} else {
 					alert('Sign-up successful! Redirecting to login...');
-					window.location.href = 'home.html'; // Redirect to the login page
+					window.location.href = './home.html'; // Redirect to the login page
 				}
 			}
 		};
