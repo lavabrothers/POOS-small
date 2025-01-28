@@ -1,45 +1,35 @@
 const urlBase = 'http://poossmall.mooo.com/LAMPAPI';
 const extension = 'php';
 
-
-
-// handle the login
+// handle the signup
 function doSignUp(event)
 {
-	event.preventDefault(); // stops the inputs from clearing
+    event.preventDefault(); // stops the inputs from clearing
 
-	const firstName = document.getElementById('.firstname').value;
-	const lastName = document.getElementById('.lastname').value;
-	const user = document.getElementById('.username').value;
+    const firstName = document.getElementById('firstname').value;
+    const lastName = document.getElementById('lastname').value;
+    const user = document.getElementById('username').value;
 
-	var password = document.querySelector('.password').value,
-	confirmPassword = document.querySelector('.confirmPassword').value;
+    var password = document.getElementById('password').value,
+    confirmPassword = document.getElementById('confirmPassword').value;
 
-	if(password !== confirmPassword){
-		alert("Password didn't match. Try again.");
-		return;
-	}
+    if(password !== confirmPassword){
+        alert("Password didn't match. Try again.");
+        return;
+    }
 
-	console.log("Passwords match..")
+    console.log("Passwords match..")
 
     const request = {
-		first: firstName,
-		last: lastName,
-		login: user,
-		password: password
-	};
+        first: firstName,
+        last: lastName,
+        login: user,
+        password: password
+    };
 
-	const jsonPayload = JSON.stringify(request)
-
-    let signup = document.getElementById("username").value;
-    //let password = document.getElementById("password").value;
+    const jsonPayload = JSON.stringify(request);
 
     document.getElementById("signUpResult").innerHTML = "";
-
-    // add for case that user or password are not entered
-
-    // let tmp = {login:login,password:password};
-    // let jsonPayload = JSON.stringify( tmp ); // convert to json string
 
     // api url
     let url = urlBase + '/Signup.' + extension;
@@ -47,32 +37,30 @@ function doSignUp(event)
     // send signup request
     let xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	// response from server
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+    // response from server
     try
-	{
-		xhr.onreadystatechange = function() 
-		{
-			if (this.readyState == 4 && this.status == 200) 
-			{
-				let jsonObject = JSON.parse( xhr.responseText ); // response from the server
-				
-				saveCookie();
-				
-				if (response.error) {
-					document.getElementById('signUpResult').innerHTML = response.error;
-				} else {
-					alert('Sign-up successful! Redirecting to login...');
-					window.location.href = './home.html'; // Redirect to the login page
-				}
-			}
-		};
-		xhr.send(jsonPayload);
-	}
-	catch(err)
-	{
-		document.getElementById("SignUpResult").innerHTML = err.message;
-	}
+    {
+        xhr.onreadystatechange = function() 
+        {
+            if (this.readyState == 4 && this.status == 200) 
+            {
+                let response = JSON.parse(xhr.responseText); // response from the server
+                
+                if (response.error) {
+                    document.getElementById('signUpResult').innerHTML = response.error;
+                } else {
+                    alert('Sign-up successful! Redirecting to login...');
+                    window.location.href = './home.html'; // Redirect to the login page
+                }
+            }
+        };
+        xhr.send(jsonPayload);
+    }
+    catch(err)
+    {
+        document.getElementById("signUpResult").innerHTML = err.message;
+    }
 }
 
 // save user data in cookies
