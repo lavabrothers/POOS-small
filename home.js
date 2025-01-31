@@ -1,7 +1,7 @@
 const contacts = []
 
 function fetchContacts() {
-    // Fetch contacts from the server
+    // Fetch all contacts from the server
     fetch('LAMPAPI/Search.php', {
         method: 'POST',
         headers: {
