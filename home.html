@@ -12,29 +12,29 @@
     <div class="listContainer">
 
         <div class="searchBox">
-            <input type="text" placeholder="Search Contact..">
+            <input type="text" placeholder="Search Contact.." style="width: 300px;">
         </div>
 
         <div class="buttons">
-            <button type="button">Add Contact</button>
+            <button type="button" style="width: 150px; height: 50px;" onclick="showCreateContactForm()">Add Contact</button>
         </div>
 
         <div class="contactsList">
             
         </div>
 
-
+        <div class="createContactForm" style="display: none;">
+            <h2>Create Contact</h2>
+            <form id="createContactForm">
+                <input type="text" id="firstName" placeholder="First Name" required>
+                <input type="text" id="lastName" placeholder="Last Name" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="text" id="phoneNum" placeholder="Phone Number" required>
+                <button type="submit">Create</button>
+            </form>
+        </div>
 
     </div>
     
-      
   </body>
-
-
-
-
-</html>
-
-
-
 </html>
