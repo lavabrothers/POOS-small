@@ -1,23 +1,16 @@
 const contacts = []
 
 function fetchContacts() {
-    const userId = localStorage.getItem('userId'); // Get the user ID from local storage
-    if (!userId) {
-        console.error('User ID not found');
-        return;
-    }
-
     // Fetch all contacts from the server
     fetch('LAMPAPI/Search.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ userId: userId, searchQuery: '' }) // Use the user ID from local storage
+        body: JSON.stringify({ userId: 1, searchQuery: '' }) // Adjust userId as needed
     })
     .then(response => response.json())
     .then(data => {
-        console.log('Fetch Contacts Response:', data); // Debug log
         if (data.error) {
             console.error(data.error);
         } else {
@@ -26,7 +19,6 @@ function fetchContacts() {
     })
     .catch(error => console.error('Error:', error));
 }
-
 
 function showContacts(contacts) {
     // Display contacts on the page
@@ -72,7 +64,7 @@ function updateContact(contactId) {
         lastName: document.getElementById(`lastName-${contactId}`).value,
         email: document.getElementById(`email-${contactId}`).value,
         phoneNum: document.getElementById(`phoneNum-${contactId}`).value,
-        userId: localStorage.getItem('userId') // Use the user ID from local storage
+        userId: 1 // Adjust userId as needed
     };
     fetch('LAMPAPI/Update.php', {
         method: 'POST',
@@ -122,7 +114,7 @@ document.getElementById('createContactForm').addEventListener('submit', function
         lastName: document.getElementById('lastName').value,
         email: document.getElementById('email').value,
         phoneNum: document.getElementById('phoneNum').value,
-        userId: localStorage.getItem('userId') // Use the user ID from local storage
+        userId: 1 // Adjust userId as needed
     };
     createContact(contact);
     document.querySelector('.createContactForm').style.display = 'none';
