@@ -4,23 +4,28 @@ function readCookie() {
     let userId = -1;
     let firstName = "";
     let lastName = "";
-    let cookies = document.cookie.split(";");
-
-    for (let i = 0; i < cookies.length; i++) {
-        let cookie = cookies[i].trim();
-        if (cookie.startsWith("firstName=")) {
-            firstName = cookie.substring("firstName=".length, cookie.length);
-        } else if (cookie.startsWith("lastName=")) {
-            lastName = cookie.substring("lastName=".length, cookie.length);
-        } else if (cookie.startsWith("userId=")) {
-            userId = parseInt(cookie.substring("userId=".length, cookie.length));
+    let data = document.cookie;
+    console.log("Cookie data:", data); // Debug log
+    let splits = data.split(",");
+    for (var i = 0; i < splits.length; i++) {
+        let thisOne = splits[i].trim();
+        let tokens = thisOne.split("=");
+        if (tokens[0] == "firstName") {
+            firstName = tokens[1];
+        } else if (tokens[0] == "lastName") {
+            lastName = tokens[1];
+        } else if (tokens[0] == "userId") {
+            userId = parseInt(tokens[1].trim());
         }
     }
+
+    console.log("Parsed userId from cookie:", userId); // Debug log
 
     if (userId < 0) {
         window.location.href = "index.html";
     } else {
         document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
+        document.getElementById("userIdDisplay").innerHTML = "User ID: " + userId; // Display user ID
     }
     return userId;
 }
