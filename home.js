@@ -36,10 +36,10 @@ function readCookie()
 
 function fetchContacts() {
     const userId = readCookie('userId'); // Get the user ID from the cookie
-    if (!userId) {
-        console.error('User ID not found');
-        return;
-    }
+    //if (!userId) {
+        //console.error('User ID not found');
+        //return;
+    //}
 
     // Fetch all contacts from the server
     fetch('LAMPAPI/Search.php', {
