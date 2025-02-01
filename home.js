@@ -149,4 +149,4 @@ document.getElementById('createContactForm').addEventListener('submit', function
 });
 
 // Fetch and display contacts when the page loads
-fetchContacts();
+document.addEventListener('DOMContentLoaded', fetchContacts);
