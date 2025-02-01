@@ -1,13 +1,40 @@
 const contacts = []
 
-function getCookieValue(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(',')[0];
+function readCookie()
+{
+	userId = -1;
+	let data = document.cookie;
+	let splits = data.split(",");
+	for(var i = 0; i < splits.length; i++) 
+	{
+		let thisOne = splits[i].trim();
+		let tokens = thisOne.split("=");
+		if( tokens[0] == "firstName" )
+		{
+			firstName = tokens[1];
+		}
+		else if( tokens[0] == "lastName" )
+		{
+			lastName = tokens[1];
+		}
+		else if( tokens[0] == "userId" )
+		{
+			userId = parseInt( tokens[1].trim() );
+		}
+	}
+	
+	if( userId < 0 )
+	{
+		window.location.href = "index.html";
+	}
+	else
+	{
+		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
+	}
 }
 
 function fetchContacts() {
-    const userId = getCookieValue('userId'); // Get the user ID from the cookie
+    const userId = readCookie('userId'); // Get the user ID from the cookie
     if (!userId) {
         console.error('User ID not found');
         return;
@@ -74,7 +101,7 @@ function createContact(contact) {
 }
 
 function updateContact(contactId) {
-    const userId = getCookieValue('userId'); // Get the user ID from the cookie
+    const userId = readCookie('userId'); // Get the user ID from the cookie
     if (!userId) {
         console.error('User ID not found');
         return;
@@ -131,7 +158,7 @@ function showCreateContactForm() {
 
 document.getElementById('createContactForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    const userId = getCookieValue('userId'); // Get the user ID from the cookie
+    const userId = readCookie('userId'); // Get the user ID from the cookie
     if (!userId) {
         console.error('User ID not found');
         return;
