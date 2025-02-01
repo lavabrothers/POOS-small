@@ -1,4 +1,5 @@
 const contacts = []
+const extension = 'php';
 
 function readCookie()
 {
