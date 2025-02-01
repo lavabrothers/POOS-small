@@ -1,45 +1,37 @@
 const contacts = []
-const extension = 'php';
 
-function readCookie()
-{
-	userId = -1;
-	let data = document.cookie;
-	let splits = data.split(",");
-	for(var i = 0; i < splits.length; i++) 
-	{
-		let thisOne = splits[i].trim();
-		let tokens = thisOne.split("=");
-		if( tokens[0] == "firstName" )
-		{
-			firstName = tokens[1];
-		}
-		else if( tokens[0] == "lastName" )
-		{
-			lastName = tokens[1];
-		}
-		else if( tokens[0] == "userId" )
-		{
-			userId = parseInt( tokens[1].trim() );
-		}
-	}
-	
-	if( userId < 0 )
-	{
-		window.location.href = "index.html";
-	}
-	else
-	{
-		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
-	}
+function readCookie() {
+    let userId = -1;
+    let firstName = "";
+    let lastName = "";
+    let cookies = document.cookie.split(";");
+
+    for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i].trim();
+        if (cookie.startsWith("firstName=")) {
+            firstName = cookie.substring("firstName=".length, cookie.length);
+        } else if (cookie.startsWith("lastName=")) {
+            lastName = cookie.substring("lastName=".length, cookie.length);
+        } else if (cookie.startsWith("userId=")) {
+            userId = parseInt(cookie.substring("userId=".length, cookie.length));
+        }
+    }
+
+    if (userId < 0) {
+        window.location.href = "index.html";
+    } else {
+        document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
+    }
+    return userId;
 }
 
 function fetchContacts() {
-    const userId = readCookie('userId'); // Get the user ID from the cookie
-    //if (!userId) {
-        //console.error('User ID not found');
-        //return;
-    //}
+    const userId = readCookie(); // Get the user ID from the cookie
+    console.log("User ID in fetchContacts:", userId); // Debug log
+    if (!userId) {
+        console.error('User ID not found');
+        return;
+    }
 
     // Fetch all contacts from the server
     fetch('LAMPAPI/Search.php', {
@@ -102,7 +94,8 @@ function createContact(contact) {
 }
 
 function updateContact(contactId) {
-    const userId = readCookie('userId'); // Get the user ID from the cookie
+    const userId = readCookie(); // Get the user ID from the cookie
+    console.log("User ID in updateContact:", userId); // Debug log
     if (!userId) {
         console.error('User ID not found');
         return;
@@ -159,7 +152,8 @@ function showCreateContactForm() {
 
 document.getElementById('createContactForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    const userId = readCookie('userId'); // Get the user ID from the cookie
+    const userId = readCookie(); // Get the user ID from the cookie
+    console.log("User ID in createContact:", userId); // Debug log
     if (!userId) {
         console.error('User ID not found');
         return;
