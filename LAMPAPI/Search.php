@@ -23,7 +23,7 @@
     } else {
  
     
-        $stmt = $conn->prepare(" SELECT First, Last, Phone, Email FROM Contacts WHERE UserID = ? AND (First LIKE ? OR Last LIKE ? OR Phone LIKE ? OR Email LIKE ? OR ContID ?) ");
+        $stmt = $conn->prepare(" SELECT ContID, First, Last, Phone, Email FROM Contacts WHERE UserID = ? AND (ContID LIKE ? OR First LIKE ? OR Last LIKE ? OR Phone LIKE ? OR Email LIKE ?) ");
         $stmt->bind_param("isssss", $userId, $searchQuery, $searchQuery, $searchQuery, $searchQuery, $searchQuery);
         $stmt->execute();
     
