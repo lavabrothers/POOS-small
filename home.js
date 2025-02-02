@@ -1,36 +1,32 @@
 const contacts = []
 
-function readCookie()
-{
-	userId = -1;
-	let data = document.cookie;
-	let splits = data.split(",");
-	for(var i = 0; i < splits.length; i++) 
-	{
-		let thisOne = splits[i].trim();
-		let tokens = thisOne.split("=");
-		if( tokens[0] == "firstName" )
-		{
-			firstName = tokens[1];
-		}
-		else if( tokens[0] == "lastName" )
-		{
-			lastName = tokens[1];
-		}
-		else if( tokens[0] == "userId" )
-		{
-			userId = parseInt( tokens[1].trim() );
-		}
-	}
-	
-	if( userId < 0 )
-	{
-		window.location.href = "index.html";
-	}
-	else
-	{
-		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
-	}
+function readCookie() {
+    let userId = -1;
+    let firstName = "";
+    let lastName = "";
+    let data = document.cookie;
+    console.log("Cookie data:", data); // Debug log
+    let splits = data.split(",");
+    for (var i = 0; i < splits.length; i++) {
+        let thisOne = splits[i].trim();
+        let tokens = thisOne.split("=");
+        if (tokens[0] == "firstName") {
+            firstName = tokens[1];
+        } else if (tokens[0] == "lastName") {
+            lastName = tokens[1];
+        } else if (tokens[0] == "userId") {
+            userId = parseInt(tokens[1].trim());
+        }
+    }
+
+    console.log("Parsed userId from cookie:", userId); // Debug log
+
+    if (userId < 0) {
+        window.location.href = "index.html";
+    } else {
+        document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
+    }
+    return userId;
 }
 
 function fetchContacts() {
@@ -47,7 +43,7 @@ function fetchContacts() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ userId: userId, searchQuery: '' }) // Use the user ID from the cookie
+        body: JSON.stringify({ userId: userId, searchQuery: '' }) // Use the user ID from the cookie and search query
     })
     .then(response => response.json())
     .then(data => {
@@ -177,33 +173,6 @@ document.getElementById('createContactForm').addEventListener('submit', function
     createContact(contact);
     document.querySelector('.createContactForm').style.display = 'none';
 });
-
-function searchContacts() {
-    let srch = document.getElementById("searchText").value;
-    document.getElementById("contactSearchResult").innerHTML = "";
-
-    let tmp = { searchQuery: srch, userId: userId };
-    let jsonPayload = JSON.stringify(tmp);
-
-    let url = 'LAMPAPI/Search.php';
-
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-    try {
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("contactSearchResult").innerHTML = "Contact(s) have been retrieved";
-                let jsonObject = JSON.parse(xhr.responseText);
-
-                showContacts(jsonObject.results);
-            }
-        };
-        xhr.send(jsonPayload);
-    } catch (err) {
-        document.getElementById("contactSearchResult").innerHTML = err.message;
-    }
-}
 
 // Fetch and display contacts when the page loads
 document.addEventListener('DOMContentLoaded', fetchContacts);
