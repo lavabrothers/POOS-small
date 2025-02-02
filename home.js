@@ -1,33 +1,36 @@
 const contacts = []
 
-function readCookie() {
-    let userId = -1;
-    let firstName = "";
-    let lastName = "";
-    let data = document.cookie;
-    console.log("Cookie data:", data); // Debug log
-    let splits = data.split(",");
-    for (var i = 0; i < splits.length; i++) {
-        let thisOne = splits[i].trim();
-        let tokens = thisOne.split("=");
-        if (tokens[0] == "firstName") {
-            firstName = tokens[1];
-        } else if (tokens[0] == "lastName") {
-            lastName = tokens[1];
-        } else if (tokens[0] == "userId") {
-            userId = parseInt(tokens[1].trim());
-        }
-    }
-
-    console.log("Parsed userId from cookie:", userId); // Debug log
-
-    if (userId < 0) {
-        window.location.href = "index.html";
-    } else {
-        document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
-        document.getElementById("userIdDisplay").innerHTML = "User ID: " + userId; // Display user ID
-    }
-    return userId;
+function readCookie()
+{
+	userId = -1;
+	let data = document.cookie;
+	let splits = data.split(",");
+	for(var i = 0; i < splits.length; i++) 
+	{
+		let thisOne = splits[i].trim();
+		let tokens = thisOne.split("=");
+		if( tokens[0] == "firstName" )
+		{
+			firstName = tokens[1];
+		}
+		else if( tokens[0] == "lastName" )
+		{
+			lastName = tokens[1];
+		}
+		else if( tokens[0] == "userId" )
+		{
+			userId = parseInt( tokens[1].trim() );
+		}
+	}
+	
+	if( userId < 0 )
+	{
+		window.location.href = "index.html";
+	}
+	else
+	{
+		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
+	}
 }
 
 function fetchContacts() {
