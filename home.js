@@ -98,7 +98,7 @@ function createContact(contact) {
 }
 
 function updateContact(contactId) {
-    //const userId = readCookie(); // Get the user ID from the cookie
+    userId = readCookie(); // Get the user ID from the cookie
     console.log("User ID in updateContact:", userId); // Debug log
     if (!userId) {
         console.error('User ID not found');
@@ -156,7 +156,7 @@ function showCreateContactForm() {
 
 document.getElementById('createContactForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    //const userId = readCookie(); // Get the user ID from the cookie
+    userId = readCookie(); // Get the user ID from the cookie
     console.log("User ID in createContact:", userId); // Debug log
     if (!userId) {
         console.error('User ID not found');
