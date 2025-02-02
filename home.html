@@ -22,7 +22,12 @@
     <div class="listContainer">
 
         <div class="searchBox">
-            <input type="text" placeholder="Search Contact.." style="width: 500px; height: 40px; font-size: 20px;">
+            <input type="text" id="searchText" placeholder="Search Contact.." style="width: 500px; height: 40px; font-size: 20px;">
+            <button type="button" style="width: 150px; height: 50px; font-size: 20px;" onclick="searchContacts()">Search</button>
+        </div>
+
+        <div id="contactSearchResult" style="font-size: 14px; color: gray; margin-top: 20px;">
+          <!-- Search result message will be displayed here -->
         </div>
 
         <div class="buttons">
@@ -51,7 +56,7 @@
     </div>
 
     <div class="version">
-      Version 1.0.6
+      Version 1.0.7
     </div>
     
   </body>

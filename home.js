@@ -178,5 +178,32 @@ document.getElementById('createContactForm').addEventListener('submit', function
     document.querySelector('.createContactForm').style.display = 'none';
 });
 
+function searchContacts() {
+    let srch = document.getElementById("searchText").value;
+    document.getElementById("contactSearchResult").innerHTML = "";
+
+    let tmp = { searchQuery: srch, userId: userId };
+    let jsonPayload = JSON.stringify(tmp);
+
+    let url = 'LAMPAPI/Search.php';
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+    try {
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("contactSearchResult").innerHTML = "Contact(s) have been retrieved";
+                let jsonObject = JSON.parse(xhr.responseText);
+
+                showContacts(jsonObject.results);
+            }
+        };
+        xhr.send(jsonPayload);
+    } catch (err) {
+        document.getElementById("contactSearchResult").innerHTML = err.message;
+    }
+}
+
 // Fetch and display contacts when the page loads
 document.addEventListener('DOMContentLoaded', fetchContacts);
