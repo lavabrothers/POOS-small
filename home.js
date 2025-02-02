@@ -30,7 +30,7 @@ function readCookie() {
 }
 
 function fetchContacts() {
-    //const userId = readCookie(); // Get the user ID from the cookie
+    userId = readCookie(); // Get the user ID from the cookie
     console.log("User ID in fetchContacts:", userId); // Debug log
     if (!userId) {
         console.error('User ID not found');
