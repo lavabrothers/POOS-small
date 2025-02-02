@@ -41,13 +41,16 @@ function fetchContacts() {
         return;
     }
 
+    const searchPayload = { userId: userId, searchQuery: '' }; // Use the user ID from the cookie and search query
+    console.log("Payload being sent to Search.php:", searchPayload); // Debug log
+
     // Fetch all contacts from the server
     fetch('LAMPAPI/Search.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ userId: userId, searchQuery: 'Jo' }) // Use the user ID from the cookie and search query
+        body: JSON.stringify(searchPayload)
     })
     .then(response => response.json())
     .then(data => {
