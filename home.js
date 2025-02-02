@@ -24,13 +24,17 @@ function readCookie() {
     if (userId < 0) {
         window.location.href = "index.html";
     } else {
-        document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
+        const userNameElement = document.getElementById("userName");
+        if (userNameElement) {
+            userNameElement.innerHTML = "Logged in as " + firstName + " " + lastName;
+        }
+        document.getElementById("userIdDisplay").innerHTML = "User ID: " + userId; // Display user ID
     }
     return userId;
 }
 
 function fetchContacts() {
-    userId = readCookie(); // Get the user ID from the cookie
+    const userId = readCookie(); // Get the user ID from the cookie
     console.log("User ID in fetchContacts:", userId); // Debug log
     if (!userId) {
         console.error('User ID not found');
@@ -43,7 +47,7 @@ function fetchContacts() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ userId: userId, searchQuery: '' }) // Use the user ID from the cookie and search query
+        body: JSON.stringify({ userId: userId, searchQuery: 'Jo' }) // Use the user ID from the cookie and search query
     })
     .then(response => response.json())
     .then(data => {
@@ -98,7 +102,7 @@ function createContact(contact) {
 }
 
 function updateContact(contactId) {
-    userId = readCookie(); // Get the user ID from the cookie
+    const userId = readCookie(); // Get the user ID from the cookie
     console.log("User ID in updateContact:", userId); // Debug log
     if (!userId) {
         console.error('User ID not found');
@@ -156,7 +160,7 @@ function showCreateContactForm() {
 
 document.getElementById('createContactForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    userId = readCookie(); // Get the user ID from the cookie
+    const userId = readCookie(); // Get the user ID from the cookie
     console.log("User ID in createContact:", userId); // Debug log
     if (!userId) {
         console.error('User ID not found');
