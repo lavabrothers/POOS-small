@@ -40,7 +40,9 @@
 				exit();
 			}
 			$stmt = $conn->prepare("INSERT into Users (First,Last,Login,Password) VALUES (?,?,?,?)");
-			$stmt->bind_param("ssss", $inData["first"], $inData["last"], $inData["login"], $inData["password"]);
+			$unhashed = $inData["password"];
+			$hashed = password_hash($unhashed, PASSWORD_DEFAULT);
+			$stmt->bind_param("ssss", $inData["first"], $inData["last"], $inData["login"], $hashed);
 			if($stmt->execute()){
 				returnWithInfo($conn->insert_id);
 			}else{
