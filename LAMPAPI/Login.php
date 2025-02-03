@@ -19,14 +19,18 @@
 	}
 	else
 	{
-		$stmt = $conn->prepare("SELECT ID,First,Last FROM Users WHERE Login=?");
+		$stmt = $conn->prepare("SELECT ID, First, Last, Password FROM Users WHERE Login=?");
 		$stmt->bind_param("ss", $inData["login"]);
 		$stmt->execute();
 		$result = $stmt->get_result();
 
-		if( $row = $result->fetch_assoc() && (($row['Password'] == $inData['password']) || password_verify($inData['password'], $row['Password'])))
+		if( $row = $result->fetch_assoc())
 		{
-			returnWithInfo( $row['First'], $row['Last'], $row['ID'] );
+			if(($row['Password'] == $inData['password']) || password_verify($inData['password'], $row['Password'])){
+				returnWithInfo( $row['First'], $row['Last'], $row['ID'] );
+			}else{
+				returnWithError("No Records Found");
+			}
 		}
 		else
 		{
