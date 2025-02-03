@@ -19,12 +19,12 @@
 	}
 	else
 	{
-		$stmt = $conn->prepare("SELECT ID,First,Last FROM Users WHERE Login=? AND Password =?");
-		$stmt->bind_param("ss", $inData["login"], $inData["password"]);
+		$stmt = $conn->prepare("SELECT ID,First,Last FROM Users WHERE Login=?");
+		$stmt->bind_param("ss", $inData["login"]);
 		$stmt->execute();
 		$result = $stmt->get_result();
 
-		if( $row = $result->fetch_assoc()  )
+		if( $row = $result->fetch_assoc() && (($row['Password'] == $inData['password']) || password_verify($inData['password'], $row['Password'])))
 		{
 			returnWithInfo( $row['First'], $row['Last'], $row['ID'] );
 		}
