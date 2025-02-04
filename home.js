@@ -107,10 +107,10 @@ function showContacts(contacts) {
     contacts.forEach(contact => {
         const contactRow = document.createElement('tr');
         contactRow.innerHTML = `
-            <td><input type="text" value="${contact.First}" id="firstName-${contact.ContID}"></td>
-            <td><input type="text" value="${contact.Last}" id="lastName-${contact.ContID}"></td>
-            <td><input type="text" value="${contact.Phone}" id="phoneNum-${contact.ContID}"></td>
-            <td><input type="text" value="${contact.Email}" id="email-${contact.ContID}"></td>
+            <td>${contact.First}</td>
+            <td>${contact.Last}</td>
+            <td>${contact.Phone}</td>
+            <td>${contact.Email}</td>
             <td>
                 <button onclick="updateContact(${contact.ContID})">Save</button>
                 <button onclick="deleteContact(${contact.ContID})">Delete</button>
@@ -133,7 +133,7 @@ function createContact(contact) {
         if (data.error) {
             console.error(data.error);
         } else {
-            fetchContacts();
+            fetchContacts(); // Fetch and display contacts after creating a new one
         }
     })
     .catch(error => console.error('Error:', error));
