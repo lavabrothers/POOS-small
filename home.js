@@ -109,7 +109,7 @@ function showContacts(contacts) {
             <td class="email-column"><input type="text" id="email-${contact.ContID}" value="${contact.Email}"></td>
             <td>
                 <button onclick="updateContact(${contact.ContID})"><i class="material-icons">mode_edit</i>Save</button>
-                <button onclick="deleteContact(${contact.ContID})"><i class="material-icons">delete</i>Delete</button>
+                <button style="color:red" onclick="deleteContact(${contact.ContID})"><i class="material-icons">delete</i>Delete</button>
             </td>
         `;
         contactsTableBody.appendChild(contactRow);
