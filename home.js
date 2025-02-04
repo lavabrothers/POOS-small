@@ -102,21 +102,21 @@ function searchContacts() {
 function showContacts(contacts) {
     console.log('Show Contacts:', contacts); // Debug log
     // Display contacts on the page
-    const contactsList = document.querySelector('.contactsList');
-    contactsList.innerHTML = '';
+    const contactsTableBody = document.querySelector('#contactsTable tbody');
+    contactsTableBody.innerHTML = '';
     contacts.forEach(contact => {
-        const contactItem = document.createElement('div');
-        contactItem.innerHTML = `
-            <div>
-                <input type="text" value="${contact.First}" id="firstName-${contact.ContID}">
-                <input type="text" value="${contact.Last}" id="lastName-${contact.ContID}">
-                <input type="text" value="${contact.Phone}" id="phoneNum-${contact.ContID}">
-                <input type="text" value="${contact.Email}" id="email-${contact.ContID}">
+        const contactRow = document.createElement('tr');
+        contactRow.innerHTML = `
+            <td><input type="text" value="${contact.First}" id="firstName-${contact.ContID}"></td>
+            <td><input type="text" value="${contact.Last}" id="lastName-${contact.ContID}"></td>
+            <td><input type="text" value="${contact.Phone}" id="phoneNum-${contact.ContID}"></td>
+            <td><input type="text" value="${contact.Email}" id="email-${contact.ContID}"></td>
+            <td>
                 <button onclick="updateContact(${contact.ContID})">Save</button>
-                <button onclick="deleteContact(${contact.ContID}, ${contact.UserID})">Delete</button>
-            </div>
+                <button onclick="deleteContact(${contact.ContID})">Delete</button>
+            </td>
         `;
-        contactsList.appendChild(contactItem);
+        contactsTableBody.appendChild(contactRow);
     });
 }
 
