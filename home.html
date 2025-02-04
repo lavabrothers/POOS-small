@@ -91,7 +91,7 @@
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th><i class="material-icons">call</i>Phone Number</th>
-                        <th class="email-column"> <i class="material-icons">email</i> Email</th>
+                        <th class="email-column"><i class="material-icons">email</i> Email</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -106,16 +106,17 @@
             <form id="createContactForm">
                 <input type="text" id="firstName" placeholder="First Name" required>
                 <input type="text" id="lastName" placeholder="Last Name" required>
-                <input type="text" id="phoneNumber" placeholder="Phone Number" required>
-                <input type="text" id="email" placeholder="Email" required>
+                <input type="text" id="phoneNum" placeholder="Phone Number" required>
+                <input type="email" id="email" placeholder="Email" required>
                 <button style="font-size:24px">Save <i class="material-icons">mode_edit</i></button>
+                <button type="button" style="font-size:24px" onclick="cancelCreateContact()">Cancel <i class="material-icons">cancel</i></button>
             </form>
         </div>
 
     </div>
 
     <div class="version">
-      Version 1.0.19
+      Version 1.0.20
     </div>
     
   </body>

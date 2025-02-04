@@ -119,17 +119,18 @@ function showContacts(contacts) {
 function createContact(contact) {
     fetch('LAMPAPI/Create.php', {
         method: 'POST',
+        body: JSON.stringify(contact),
         headers: {
             'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(contact)
+        }
     })
     .then(response => response.json())
     .then(data => {
+        console.log('Create Contact Response:', data); // Debug log
         if (data.error) {
             console.error(data.error);
         } else {
-            fetchContacts(); // Fetch and display contacts after creating a new one
+            fetchContacts();
         }
     })
     .catch(error => console.error('Error:', error));
