@@ -107,10 +107,10 @@ function showContacts(contacts) {
     contacts.forEach(contact => {
         const contactRow = document.createElement('tr');
         contactRow.innerHTML = `
-            <td>${contact.First}</td>
-            <td>${contact.Last}</td>
-            <td>${contact.Phone}</td>
-            <td class="email-column">${contact.Email}</td>
+            <td><input type="text" id="firstName-${contact.ContID}" value="${contact.First}"></td>
+            <td><input type="text" id="lastName-${contact.ContID}" value="${contact.Last}"></td>
+            <td><input type="text" id="phoneNum-${contact.ContID}" value="${contact.Phone}"></td>
+            <td class="email-column"><input type="text" id="email-${contact.ContID}" value="${contact.Email}"></td>
             <td>
                 <button onclick="updateContact(${contact.ContID})">Save</button>
                 <button onclick="deleteContact(${contact.ContID})">Delete</button>
