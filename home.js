@@ -29,7 +29,7 @@ function readCookie() {
             userNameElement.innerHTML = "Logged in as " + firstName + " " + lastName;
         }
     }
-    return userId;
+    return { userId, firstName, lastName };
 }
 
 function fetchContacts() {
@@ -234,3 +234,10 @@ document.getElementById('createContactForm').addEventListener('submit', function
 
 // Fetch and display contacts when the page loads
 document.addEventListener('DOMContentLoaded', fetchContacts);
+
+document.addEventListener('DOMContentLoaded', function() {
+    const { userId, firstName, lastName } = readCookie();
+    if (userId) {
+        document.getElementById('userName').textContent = `${firstName} ${lastName}`;
+    }
+});
