@@ -203,6 +203,14 @@ function showCreateContactForm() {
     document.querySelector('.createContactForm').style.display = 'block';
 }
 
+function cancelCreateContact() {
+    
+    document.querySelector('.createContactForm').style.display = 'none';
+    
+    
+    document.getElementById('createContactForm').reset();
+}
+
 function doLogout() {
     userId = 0;
     firstName = "";
