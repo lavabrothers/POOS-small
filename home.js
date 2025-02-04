@@ -110,7 +110,7 @@ function showContacts(contacts) {
             <td>${contact.First}</td>
             <td>${contact.Last}</td>
             <td>${contact.Phone}</td>
-            <td>${contact.Email}</td>
+            <td class="email-column">${contact.Email}</td>
             <td>
                 <button onclick="updateContact(${contact.ContID})">Save</button>
                 <button onclick="deleteContact(${contact.ContID})">Delete</button>
