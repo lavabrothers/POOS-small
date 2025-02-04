@@ -64,6 +64,38 @@ function fetchContacts() {
     .catch(error => console.error('Error:', error));
 }
 
+function searchContacts() {
+    const userId = readCookie(); // Get the user ID from the cookie
+    console.log("User ID in searchContacts:", userId); // Debug log
+    if (!userId) {
+        console.error('User ID not found');
+        return;
+    }
+
+    let searchQuery = document.getElementById("searchText").value;
+    const searchPayload = { userId: userId, searchQuery: searchQuery }; // Use the user ID from the cookie and search query
+    console.log("Payload being sent to Search.php:", searchPayload); // Debug log
+
+    // Fetch contacts based on the search query from the server
+    fetch('LAMPAPI/Search.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(searchPayload)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Search Contacts Response:', data); // Debug log
+        if (data.error) {
+            console.error(data.error);
+        } else {
+            showContacts(data.results);
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
 function showContacts(contacts) {
     console.log('Show Contacts:', contacts); // Debug log
     // Display contacts on the page
