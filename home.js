@@ -22,7 +22,7 @@ function readCookie() {
     console.log("Parsed userId from cookie:", userId); // Debug log
 
     if (userId < 0) {
-        //window.location.href = "index.html";
+        window.location.href = "index.html";
     } else {
         const userNameElement = document.getElementById("userName");
         if (userNameElement) {
