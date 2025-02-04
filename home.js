@@ -174,7 +174,13 @@ function updateContact(contactId) {
 }
 
 function deleteContact(contactId, userId) {
+    const userId = readCookie(); // Get the user ID from the cookie
     console.log(`Deleting contact with ID: ${contactId} for user ID: ${userId}`); // Debug log
+
+    if (!contactId || !userId) {
+        console.error('Missing ContID or UserID');
+        return;
+    }
 
     fetch('LAMPAPI/Delete.php', {
         method: 'POST',
