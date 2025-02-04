@@ -36,6 +36,9 @@
       .searchContainer input {
         margin-right: 10px; /* Adjust the spacing as needed */
       }
+      .searchContainer button {
+        margin-left: 10px; /* Adjust the spacing as needed */
+      }
     </style>
   </head>
   
@@ -55,15 +58,12 @@
             <div class="searchContainer">
                 <input type="text" id="searchText" placeholder="Search Contact.." style="width: 500px; height: 40px; font-size: 20px;">
                 <button type="button" style="width: 150px; height: 50px; font-size: 20px;" onclick="searchContacts()">Search</button>
+                <button type="button" style="width: 150px; height: 50px; font-size: 20px; margin-left: 10px;" onclick="showCreateContactForm()">Add Contact</button>
             </div>
         </div>
 
         <div id="contactSearchResult" style="font-size: 14px; color: gray; margin-top: 20px;">
           <!-- Search result message will be displayed here -->
-        </div>
-
-        <div class="buttons">
-            <button type="button" style="width: 150px; height: 50px; font-size: 20px;" onclick="showCreateContactForm()">Add Contact</button>
         </div>
 
         <div class="contactsList">
