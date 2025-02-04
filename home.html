@@ -40,6 +40,16 @@
         margin-left: 10px; /* Adjust the spacing as needed */
       }
     </style>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
   
   <body class="container">
@@ -50,15 +60,17 @@
       <!-- User name will be displayed here -->
     </div>
 
-    <button class="logoutButton" onclick="doLogout()">Logout</button>
+    <button class="logoutButton" onclick="doLogout()">
+      <i class="material-icons">exit_to_app</i>
+    </button>
 
     <div class="listContainer">
 
         <div class="searchBox">
             <div class="searchContainer">
                 <input type="text" id="searchText" placeholder="Search Contact.." style="width: 500px; height: 50px; font-size: 25px;">
-                <button type="button" style="width: 150px; height: 50px; font-size: 20px;" onclick="searchContacts()">Search</button>
-                <button type="button" style="width: 150px; height: 50px; font-size: 20px; margin-left: 10px;" onclick="showCreateContactForm()">Add Contact</button>
+                <button type="button" style="width: 150px; height: 50px; font-size: 20px;" onclick="searchContacts()"><i class="material-icons">search</i>Search</button>
+                <button type="button" style="width: 180px; height: 50px; font-size: 20px; margin-left: 10px;" onclick="showCreateContactForm()"><i class="material-icons">add_to_photos</i>Add Contact</button>
             </div>
         </div>
 
@@ -91,6 +103,7 @@
                 <input type="text" id="email" placeholder="Email" required>
                 <input type="text" id="phoneNum" placeholder="Phone Number" required>
                 <button type="submit">Create</button>
+                <button style="font-size:24px"><i class="material-icons">mode_edit</i>Save</button>
             </form>
         </div>
 

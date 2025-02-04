@@ -22,7 +22,7 @@ function readCookie() {
     console.log("Parsed userId from cookie:", userId); // Debug log
 
     if (userId < 0) {
-        window.location.href = "index.html";
+        //window.location.href = "index.html";
     } else {
         const userNameElement = document.getElementById("userName");
         if (userNameElement) {
@@ -108,8 +108,8 @@ function showContacts(contacts) {
             <td><input type="text" id="phoneNum-${contact.ContID}" value="${contact.Phone}"></td>
             <td class="email-column"><input type="text" id="email-${contact.ContID}" value="${contact.Email}"></td>
             <td>
-                <button onclick="updateContact(${contact.ContID})">Save</button>
-                <button onclick="deleteContact(${contact.ContID})">Delete</button>
+                <button onclick="updateContact(${contact.ContID})"><i class="material-icons">mode_edit</i>Save</button>
+                <button onclick="deleteContact(${contact.ContID})"><i class="material-icons">delete</i>Delete</button>
             </td>
         `;
         contactsTableBody.appendChild(contactRow);
