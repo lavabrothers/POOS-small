@@ -171,6 +171,8 @@ function updateContact(contactId) {
 }
 
 function deleteContact(contactId, userId) {
+    console.log(`Deleting contact with ID: ${contactId} for user ID: ${userId}`); // Debug log
+
     fetch('LAMPAPI/Delete.php', {
         method: 'POST',
         headers: {
@@ -180,10 +182,11 @@ function deleteContact(contactId, userId) {
     })
     .then(response => response.json())
     .then(data => {
+        console.log('Delete Contact Response:', data); // Debug log
         if (data.error) {
             console.error(data.error);
         } else {
-            fetchContacts();
+            fetchContacts(); // Refresh the contact list after deletion
         }
     })
     .catch(error => console.error('Error:', error));
@@ -191,6 +194,16 @@ function deleteContact(contactId, userId) {
 
 function showCreateContactForm() {
     document.querySelector('.createContactForm').style.display = 'block';
+}
+
+function doLogout() {
+    userId = 0;
+    firstName = "";
+    lastName = "";
+    document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+    document.cookie = "lastName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+    document.cookie = "userId= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+    window.location.href = "index.html"; // go to the login page
 }
 
 document.getElementById('createContactForm').addEventListener('submit', function(event) {
