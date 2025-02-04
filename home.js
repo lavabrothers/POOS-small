@@ -173,8 +173,9 @@ function updateContact(contactId) {
     .catch(error => console.error('Error:', error));
 }
 
-function deleteContact(contactId, userId) {
+function deleteContact(contactId) {
     const userId = readCookie(); // Get the user ID from the cookie
+
     console.log(`Deleting contact with ID: ${contactId} for user ID: ${userId}`); // Debug log
 
     if (!contactId || !userId) {
