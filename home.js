@@ -134,6 +134,7 @@ function createContact(contact) {
         }
     })
     .catch(error => console.error('Error:', error));
+    document.getElementById('createContactForm').reset();
 }
 
 function updateContact(contactId) {
