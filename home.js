@@ -111,7 +111,7 @@ function showContacts(contacts) {
                 <input type="text" value="${contact.First}" id="firstName-${contact.ContID}">
                 <input type="text" value="${contact.Last}" id="lastName-${contact.ContID}">
                 <input type="text" value="${contact.Phone}" id="phoneNum-${contact.ContID}">
-                <input type="email" value="${contact.Email}" id="email-${contact.ContID}">
+                <input type="text" value="${contact.Email}" id="email-${contact.ContID}">
                 <button onclick="updateContact(${contact.ContID})">Save</button>
                 <button onclick="deleteContact(${contact.ContID}, ${contact.UserID})">Delete</button>
             </div>
@@ -174,7 +174,13 @@ function updateContact(contactId) {
 }
 
 function deleteContact(contactId, userId) {
+    const userId = readCookie(); // Get the user ID from the cookie
     console.log(`Deleting contact with ID: ${contactId} for user ID: ${userId}`); // Debug log
+
+    if (!contactId || !userId) {
+        console.error('Missing ContID or UserID');
+        return;
+    }
 
     fetch('LAMPAPI/Delete.php', {
         method: 'POST',
