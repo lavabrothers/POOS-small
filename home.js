@@ -28,7 +28,10 @@ function readCookie() {
         if (userNameElement) {
             userNameElement.innerHTML = "Logged in as " + firstName + " " + lastName;
         }
-        document.getElementById("userIdDisplay").innerHTML = "User ID: " + userId; // Display user ID
+        const userIdDisplayElement = document.getElementById("userIdDisplay");
+        if (userIdDisplayElement) {
+            userIdDisplayElement.innerHTML = "User ID: " + userId; // Display user ID
+        }
     }
     return userId;
 }
