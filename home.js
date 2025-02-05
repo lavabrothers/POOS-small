@@ -256,13 +256,12 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function phoneKeyFunction(event) {
-    var key = event.keyCode || event.which; // get key cross-browser
+    const input = event.target;
+    const value = input.value;
 
-    if (key < 48 || key > 57) { // if it is not a number ascii code
-        // Prevent default action, which is inserting character
-        event.preventDefault();
-    }
+    // Remove any non-numeric characters
+    input.value = value.replace(/\D/g, '');
 }
 
-// Attach the phoneKeyFunction to the input event of the phone number field
+// Attach the phoneKeyFunction to the input event of the phone number field in the create contact form
 document.getElementById('phoneNum').addEventListener('input', phoneKeyFunction);
