@@ -29,7 +29,7 @@ function readCookie() {
             userNameElement.innerHTML = "Logged in as " + firstName + " " + lastName;
         }
     }
-    return { userId, firstName, lastName };
+    return userId;
 }
 
 function fetchContacts() {
