@@ -153,6 +153,10 @@ function updateContact(contactId) {
         phoneNum: document.getElementById(`phoneNum-${contactId}`).value,
         userId: userId // Use the user ID from the cookie
     };
+
+    // Attach the phoneKeyFunction to the input event of the phone number field
+    document.getElementById(`phoneNum-${contactId}`).addEventListener('input', phoneKeyFunction);
+
     fetch('LAMPAPI/Update.php', {
         method: 'POST',
         headers: {
@@ -164,11 +168,10 @@ function updateContact(contactId) {
     .then(data => {
         if (data.error) {
             console.error(data.error);
-        } else {
-            fetchContacts();
         }
     })
     .catch(error => console.error('Error:', error));
+    document.getElementById('createContactForm').reset();
 }
 
 function deleteContact(contactId) {
@@ -251,3 +254,15 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('userName').textContent = `${firstName} ${lastName}`;
     }
 });
+
+function phoneKeyFunction(event) {
+    var key = event.keyCode || event.which; // get key cross-browser
+
+    if (key < 48 || key > 57) { // if it is not a number ascii code
+        // Prevent default action, which is inserting character
+        event.preventDefault();
+    }
+}
+
+// Attach the phoneKeyFunction to the input event of the phone number field
+document.getElementById('phoneNum').addEventListener('input', phoneKeyFunction);
