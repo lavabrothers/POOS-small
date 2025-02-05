@@ -38,19 +38,19 @@
       "properties": {
         "first": {
           "type": "string",
-          "example": "george"
+          "example": "Freddy"
         },
         "last": {
           "type": "string",
-          "example": "stephanopoulos"
+          "example": "FazBear"
         },
         "login": {
           "type": "string",
-          "example": "fred"
+          "example": "freddyfazbear"
         },
         "password": {
           "type": "string",
-          "example": "secret"
+          "example": "pizza"
         }
       }
     },
@@ -66,23 +66,23 @@
       "properties": {
         "firstName": {
           "type": "string",
-          "example": "george"
+          "example": "Bonnie"
         },
         "lastName": {
           "type": "string",
-          "example": "clooney"
+          "example": "Bunny"
         },
         "email": {
           "type": "string",
-          "example": "georgeclooney@gmail.com"
+          "example": "bonniebunny@gmail.com"
         },
         "phoneNum": {
           "type": "string",
-          "example": "1234567890"
+          "example": "8335780158"
         },
         "userId": {
           "type": "integer",
-          "example": "1"
+          "example": "23"
         }
       }
     },
@@ -95,11 +95,11 @@
       "properties": {
         "ContID": {
           "type": "integer",
-          "example": "1"
+          "example": "2"
         },
         "UserID": {
           "type": "integer",
-          "example": "1"
+          "example": "23"
         }
       }
     },
@@ -120,23 +120,23 @@
         },
         "firstName": {
           "type": "string",
-          "example": "george"
+          "example": "Chika"
         },
         "lastName": {
           "type": "string",
-          "example": "clooney"
+          "example": "PartyTime"
         },
         "email": {
           "type": "string",
-          "example": "georgeclooney@gmail.com"
+          "example": "partychika@gmail.com"
         },
         "phoneNum": {
           "type": "string",
-          "example": "1234567890"
+          "example": "8335780158"
         },
         "userId": {
           "type": "integer",
-          "example": "1"
+          "example": "23"
         }
       }
     },
@@ -150,12 +150,12 @@
       "properties":{
         "userId":{
           "type": "integer",
-          "example": "1"
+          "example": "21"
         },
 
         "searchQuery":{
           "type": "string",
-          "example": "Jo"
+          "example": "n"
         }
       }
     }
