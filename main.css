@@ -1,0 +1,369 @@
+.body 
+{
+    width: 100%;
+}
+
+.site{
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #e9ecf3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+/* grey: #E3EDEE */
+/* blue: #80D1DD */
+/* red: #FF3B3F */
+/* darker blue: #297681 */
+/* blue black: #0B2626 */
+
+.banner{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    background-color: #80D1DD;
+}
+.home{
+    justify-content: space-between;
+}
+.titleSpace{
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+}
+.homeTitle{
+    justify-content: center;
+    flex: 1;
+    display: flex;
+    text-align: center;
+}
+.title 
+{
+    text-align: left;
+    font-size: 25px;
+    width: 100%;
+    margin: 15px;
+    font-family: 'Ubuntu', sans-serif;
+    color: white;
+    text-shadow: 0px 2px 4px  #297681;
+    white-space: nowrap;
+}
+.titleHome{
+    text-align: center;
+}
+.iconSpace{
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    gap:10px;
+    margin-right: 15px;
+
+}
+.iconHome{
+    display: flex;
+    justify-content: flex-start;
+    margin-left:15px;
+}
+.icon{
+    background-color: #ffffff;
+    justify-self: center;
+    border-radius: 18px;
+    border: none;
+    color: #297681;
+    padding: 5px 32px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.listContainer{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    background-color: #fafbff;
+    border-color: #8c90b9;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+
+.container{
+    margin-top: 80px;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    width: 70%;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    height: 450px;
+    box-shadow: 0px 20px 10px  #0B2626;
+}
+.signUpContainer{
+    height: 550px;
+    margin-top: 50px;
+}
+.card{
+    padding:20px;
+    width: 75%;
+    height: 100%;
+    background-color: #FFFFFF;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.signUpCard{
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.card2{
+    padding:20px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: 100%;
+    background-color: #80D1DD;
+}
+.signUpCard2{
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+
+
+
+.cardTitle{
+    justify-self: center;
+    color: #80D1DD;
+    margin-bottom: -10px;
+    font-size: 45px;
+}
+.input{
+    background-color: #E3EDEE;
+    border-color: #afc6c7;
+    height: 45px;
+    color: #0B2626;
+}
+.split{
+    display:flex;
+    margin-left: 5%;
+    margin-right: 7%;
+}
+.small{
+    margin-left: 5px !important;
+    margin-right: 10px;
+}
+.redButton{
+    background-color: #FF3B3F;
+    justify-self: center;
+    border-radius: 18px;
+    border: none;
+    color: white;
+    padding: 12px 32px;
+    font-weight: bold;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.searchButton{
+    padding: 12px 18px;
+}
+.addButton{
+    padding: 12px 18px;
+}
+.buttonCenter{
+    justify-self: center;
+    margin-top:20px
+}
+
+
+.goToText{
+    color: #0B2626;
+    padding:10px;
+    margin-left: 15px;
+    margin-right: 15px;
+    text-align: center;
+}
+.whiteButton{
+    background-color: #ffffff;
+    justify-self: center;
+    border-radius: 18px;
+    border: none;
+    color: #297681;
+    padding: 12px 32px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: -20px;
+}
+
+.label{
+    margin-left: 45px;
+    padding: 5px;
+}
+
+
+::placeholder{
+    color: #297681;
+}
+
+
+
+
+
+.img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.required{
+    color: red;
+}
+.label1{
+    content:"*";
+    color: red;
+}
+
+#loginDiv
+{
+    font-size: 30px;
+    width: 70%;
+    margin-left: 15%;
+    padding: 25px;
+    background-color: #a04e4e;
+}
+
+#loggedInDiv
+{
+    font-size: 30px;
+    width: 70%;
+    margin-left: 15%;
+    padding: 25px;
+    background-color: #b2b2b2;
+}
+
+#accessUIDiv
+{
+    font-size: 30px;
+    width: 70%;
+    margin-left: 15%;
+    padding: 25px;
+    background-color: #b2b2b2;
+}
+
+.buttons
+{
+    font-size: 30px;
+    border-radius: 25px;
+    width: 50%;
+    margin-left: 25%;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.buttons:hover{
+    background-color: #00d5124f;
+    color: #FFFFFF;
+    opacity: 50%;
+}
+
+#loginName
+{
+	font-size: 30px;
+}
+#loginPassword
+{
+	font-size: 30px;
+}
+#searchText
+{
+	font-size: 30px;
+}
+#colorText
+{
+	font-size: 30px;
+}
+
+input[type="text"],input[type="password"]{
+    border-radius: 5px;
+    text-align: center;
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 2%;
+    font-family: 'Ubuntu', sans-serif;
+}
+.inputSearch{
+    margin-bottom: 0 !important;
+}
+
+#inner-title{
+    display: inline-block;
+    font-size: 0.8em;
+    width: 90%;
+    text-align: center;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    font-family: 'Ubuntu', sans-serif;
+    color: #95060a;
+}
+
+#loginResult{
+    display: inline-block;
+    font-size: 0.8em;
+    width: 90%;
+    text-align: center;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    font-family: 'Ubuntu', sans-serif;
+    color: #95060a;
+}
+
+#userName{
+    display: inline-block;
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+}
+
+#logoutButton{
+    width: 20%;
+    margin-left: 40%;
+}
+
+select{
+    width: 30%;
+    margin-left: 35%;
+    margin-top: 2%;
+    font-size: 0.75em;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+#colorSearchResult{
+    display: none;
+}
+
+#colorAddResult{
+    display: inline-block;
+    font-size: 0.8em;
+    width: 90%;
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    font-family: 'Ubuntu', sans-serif;
+    color: #95060a;
+}
