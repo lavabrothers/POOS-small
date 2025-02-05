@@ -1,6 +1,9 @@
+
+
 # POOS-small
 The repository for our POOS small project website
-
+![Login](https://github.com/lavabrothers/POOS-small/blob/main/images/login.png)
+![Signup](https://github.com/lavabrothers/POOS-small/blob/main/images/Signup.png)
 ![Home](https://github.com/lavabrothers/POOS-small/blob/main/images/Home.png)
 
 
